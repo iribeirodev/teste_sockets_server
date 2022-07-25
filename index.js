@@ -1,7 +1,9 @@
-//server.js
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+require('dotenv').config();
+
+const port = process.env.PORT;
 
 io.on('connection', function (socket) {
 	console.log('connection from ', socket.id);
@@ -18,6 +20,6 @@ io.on('connection', function (socket) {
 
 
 
-http.listen(5000, function () {
-	console.log('listening on *:5000');
+http.listen(port, function () {
+	console.log(`listening on *:${port}`);
 });
